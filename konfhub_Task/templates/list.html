@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Title</title>
+    </head>
+    <body>
+        {% if lists and vals %}
+        <table>
+            <tr>
+                {% for list in lists %}
+                <p style="display:none;">{{ forloop.counter }}</p>
+                    {% if forloop.counter == 1 %}
+                        {% for key,value in list.items %}
+                            <th>{{ key }}</th>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {% for list in lists %}
+                <tr>
+                    {% for key,value in list.items %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            {% for val in vals %}
+                <tr>
+                    {% for key,value in val.items %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </body>
+    <style>
+        table,th,td{
+            border:1px solid;
+        }
+    </style>
+
+</html>
